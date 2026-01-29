@@ -1,0 +1,35 @@
+{
+  "slack_integration": {
+    "enabled": false,
+    "bot_token": "",
+    "signing_secret": "",
+
+    "channels": {
+      "general_dev": "#development",
+      "code_reviews": "#code-review",
+      "deployments": "#deployments",
+      "alerts": "#alerts",
+      "cursor_ai": "#cursor-ai"
+    },
+
+    "notifications": {
+      "background_agents": {
+        "channel": "#cursor-ai",
+        "events": ["started", "completed", "failed"],
+        "include_details": true
+      },
+      "bugbot_reviews": {
+        "channel": "#code-review",
+        "severity_threshold": "medium",
+        "format": "detailed"
+      }
+    },
+
+    "interactive_features": {
+      "slash_commands": false,
+      "interactive_messages": false,
+      "workflow_approvals": false,
+      "direct_cursor_chat": false
+    }
+  }
+}
