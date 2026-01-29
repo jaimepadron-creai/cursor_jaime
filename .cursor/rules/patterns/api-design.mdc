@@ -1,0 +1,71 @@
+---
+globs: **/api/**/*.py, **/api/**/*.ts, **/routes/**/*, **/src/**/api*.py
+alwaysApply: false
+---
+
+# Reglas para Diseño de API
+
+## RESTful Conventions
+
+### Métodos HTTP
+- **GET**: Obtener recursos (listar o detalle)
+- **POST**: Crear nuevos recursos
+- **PUT**: Actualizar recurso completo
+- **PATCH**: Actualización parcial de recurso
+- **DELETE**: Eliminar recurso
+
+### URL Structure
+- URLs en plural y kebab-case: `/api/v1/productos`, `/api/v1/usuarios`
+- IDs en path: `/api/v1/productos/{id}`
+- Sub-recursos: `/api/v1/productos/{id}/reviews`
+- Filtros y paginación como query params: `/api/v1/productos?page=1&limit=10&category=electronics`
+
+## Response Format Standard
+
+### Respuesta Exitosa
+```json
+{
+  "success": true,
+  "data": {
+    // Datos del recurso
+  },
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "limit": 10,
+      "total": 100
+    }
+  }
+}
+```
+
+### Respuesta de Error
+```json
+{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Datos inválidos",
+    "details": {
+      "field": "email",
+      "reason": "Formato inválido"
+    }
+  }
+}
+```
+
+## Status Codes
+- **200**: GET, PUT, PATCH exitosos
+- **201**: POST exitoso (recurso creado)
+- **204**: DELETE exitoso (sin contenido)
+- **400**: Bad Request (datos inválidos)
+- **401**: Unauthorized (no autenticado)
+- **403**: Forbidden (sin permisos)
+- **404**: Not Found (recurso no existe)
+- **422**: Unprocessable Entity (error de validación)
+- **500**: Internal Server Error (error del servidor)
+
+## Validación
+- Validar todos los inputs con Pydantic (FastAPI) o similar
+- Retornar errores de validación con detalles específicos
+- Validar tipos, rangos, formatos (email, URL, etc.)
