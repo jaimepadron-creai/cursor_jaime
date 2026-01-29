@@ -1,0 +1,23 @@
+# backend/.dockerignore (Módulo 6)
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.env.*
+.venv
+venv
+ENV
+*.db
+*.sqlite3
+.git
+.gitignore
+.dockerignore
+Dockerfile
+*.md
+tests
+htmlcov
+.coverage
+.pytest_cache
+*.log

@@ -1,0 +1,14 @@
+# frontend/.dockerignore (Módulo 6)
+node_modules
+dist
+.git
+.gitignore
+.dockerignore
+Dockerfile
+*.md
+.env
+.env.*
+coverage
+.vite
+*.log
+.DS_Store
