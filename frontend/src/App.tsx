@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Layout } from 'antd'
 import AppHeader from '@shared/components/Layout/Header'
 import HomePage from './pages/HomePage'
+import { ProductsPage } from '@features/Products/pages/ProductsPage'
 
 const { Content, Footer } = Layout
 
@@ -24,8 +25,8 @@ const App: React.FC = () => {
           {/* ❌ PROBLEMA: No loading fallback para suspense */}
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* ❌ PROBLEMA: More routes will be added but no route protection */}
-            {/* TODO Day 2: /products, /products/:id */}
+            <Route path="/products" element={<ProductsPage />} />
+            {/* TODO: /products/:id, /cart, /checkout, /orders, /login, /register */}
             {/* TODO Day 3: /cart, /checkout, /orders */}
             {/* TODO Day 4: /login, /register, /profile */}
             {/* TODO Day 5: /admin/* (protected routes) */}
