@@ -4,6 +4,7 @@ import { Layout } from 'antd'
 import AppHeader from '@shared/components/Layout/Header'
 import HomePage from './pages/HomePage'
 import { ProductsPage } from '@features/Products/pages/ProductsPage'
+import { LoginPage } from '@features/Auth/pages/LoginPage'
 
 const { Content, Footer } = Layout
 
@@ -26,7 +27,8 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<ProductsPage />} />
-            {/* TODO: /products/:id, /cart, /checkout, /orders, /login, /register */}
+            <Route path="/login" element={<LoginPage />} />
+            {/* TODO: /products/:id, /cart, /checkout, /orders, /register */}
             {/* TODO Day 3: /cart, /checkout, /orders */}
             {/* TODO Day 4: /login, /register, /profile */}
             {/* TODO Day 5: /admin/* (protected routes) */}
