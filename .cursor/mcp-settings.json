@@ -1,0 +1,39 @@
+{
+  "mcps": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-playwright"],
+      "env": {
+        "PLAYWRIGHT_BASE_URL": "http://localhost:3000"
+      }
+    },
+    "database": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "postgresql://localhost:5432/ecommerce"
+      }
+    },
+    "git": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-git"],
+      "env": {
+        "GIT_REPO_PATH": "."
+      }
+    },
+    "internal-api": {
+      "command": "node",
+      "args": ["mcp-servers/dist/internal-api-server.js"],
+      "env": {
+        "INTERNAL_API_URL": "http://localhost:8000"
+      }
+    },
+    "monitoring": {
+      "command": "node",
+      "args": ["mcp-servers/dist/monitoring-server.js"],
+      "env": {
+        "MONITORING_API_URL": "http://localhost:8000/api/health"
+      }
+    }
+  }
+}
