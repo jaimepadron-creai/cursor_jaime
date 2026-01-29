@@ -1,5 +1,5 @@
-# .github/workflows/frontend.yml (Módulo 6 - CI/CD)
-# Frontend: install, lint, build
+# .github/workflows/frontend.yml (Módulo 6 + Módulo 10 - CI/CD + tests)
+# Frontend: install, lint, test, build
 name: Frontend CI
 
 on:
@@ -41,6 +41,9 @@ jobs:
       - name: Lint
         run: pnpm run lint
         continue-on-error: true
+
+      - name: Run tests
+        run: pnpm run test
 
       - name: Build
         run: pnpm run build
