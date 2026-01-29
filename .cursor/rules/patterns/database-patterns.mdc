@@ -1,0 +1,53 @@
+---
+globs: **/database*.py, **/models*.py, **/schema*.py, **/migrations/**/*, **/src/**/database*.py
+alwaysApply: false
+---
+
+# Reglas para Patrones de Base de Datos
+
+## Convenciones de Nomenclatura
+- **Tablas**: plural, snake_case (ej: `productos`, `ordenes_items`, `user_profiles`)
+- **Columnas**: snake_case (ej: `created_at`, `user_id`, `is_active`)
+- **Claves foráneas**: `{tabla_singular}_id` (ej: `user_id`, `product_id`)
+- **Índices**: `idx_{tabla}_{columnas}` (ej: `idx_products_category`)
+
+## Campos Comunes
+- **id**: Primary key (UUID o auto-increment según proyecto)
+- **created_at**: Timestamp de creación (automático)
+- **updated_at**: Timestamp de última actualización (automático)
+- **deleted_at**: Para soft delete (opcional, nullable)
+
+## SQLAlchemy / ORM
+
+### Estructura de Modelos
+```python
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
+
+class Product(Base):
+    __tablename__ = 'productos'
+    
+    id = Column(Integer, primary_key=True)
+    name = Column(String(255), nullable=False)
+    category_id = Column(Integer, ForeignKey('categorias.id'))
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, onupdate=func.now())
+    
+    # Relaciones
+    category = relationship('Category', back_populates='products')
+```
+
+### Mejores Prácticas
+- Un modelo por archivo cuando sea posible (o agrupar por dominio)
+- Definir relaciones explícitas con `relationship` y `back_populates`
+- Usar type hints en modelos
+- Documentar relaciones complejas
+- Usar migraciones (Alembic) para todos los cambios de schema
+- Nunca modificar migraciones ya aplicadas; crear nuevas para ajustes
+
+## Consultas
+- Usar ORM para la mayoría de consultas
+- Optimizar con `joinedload` o `selectinload` para evitar N+1 queries
+- Usar índices en columnas frecuentemente consultadas
+- Validar datos antes de insertar/actualizar

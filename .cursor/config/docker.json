@@ -1,0 +1,18 @@
+{
+  "docker_integration": {
+    "enabled": false,
+    "auto_detect_containers": false,
+    "development_containers": [
+      {
+        "name": "backend-dev",
+        "dockerfile": "backend/Dockerfile",
+        "context_mount": true
+      },
+      {
+        "name": "frontend-dev",
+        "dockerfile": "frontend/Dockerfile",
+        "context_mount": true
+      }
+    ]
+  }
+}

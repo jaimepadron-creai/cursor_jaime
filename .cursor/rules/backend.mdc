@@ -1,0 +1,38 @@
+---
+globs: **/*.py, **/api/**/*, **/src/**/*.py, **/backend/**/*
+alwaysApply: false
+---
+
+# Reglas Backend
+
+## Convenciones Python / FastAPI
+- Seguir PEP 8 estrictamente
+- Usar type hints en todas las funciones y parámetros
+- Rutas bajo `src/`, agrupadas por dominio (ej: `src/products/`, `src/users/`)
+- Modelos Pydantic para request/response validation
+- Usar async/await para operaciones I/O
+
+## Estructura de Proyecto
+- Separar lógica de negocio de rutas (service layer pattern)
+- Modelos de base de datos en `models.py` o `database.py`
+- Schemas Pydantic en archivos separados o en el mismo módulo
+- Configuración centralizada en `shared/config.py` o similar
+
+## API Design
+- Rutas RESTful con prefijo `/api/v1/`
+- Documentación OpenAPI automática (FastAPI genera esto)
+- Validación con Pydantic en todos los endpoints
+- Manejo de errores consistente con HTTPException
+- Respuestas en formato estándar: `{ "success": true, "data": {...} }`
+
+## Seguridad
+- Validar y sanitizar todos los inputs
+- Nunca exponer información sensible en respuestas
+- Usar variables de entorno para configuración sensible
+- Implementar autenticación/autorización según requerimientos
+
+## Base de Datos
+- Usar SQLAlchemy ORM
+- Migraciones con Alembic
+- Transacciones para operaciones críticas
+- Manejo de errores de BD apropiado

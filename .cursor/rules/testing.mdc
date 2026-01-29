@@ -1,0 +1,36 @@
+---
+globs: **/*.test.{ts,js,tsx,jsx}, **/*.spec.{ts,js,tsx,jsx}, **/__tests__/**/*, **/tests/**/*
+alwaysApply: false
+---
+
+# Reglas de Testing
+
+## Convenciones de Testing
+- Usar describe/it (Jest) o test/it (Vitest) para estructura de tests
+- Implementar AAA pattern (Arrange, Act, Assert)
+- Mockear dependencias externas (APIs, servicios, módulos)
+- Escribir tests descriptivos con nombres claros que expliquen qué se está probando
+- Un test debe verificar una cosa específica
+
+## Estructura de Tests
+- Tests unitarios para funciones puras y utilidades
+- Tests de integración para componentes y flujos
+- Tests E2E para flujos críticos de usuario
+- Agrupar tests relacionados con `describe` blocks
+
+## Frontend Testing (React)
+- Usar React Testing Library (no Enzyme)
+- Renderizar componentes y testear comportamiento, no implementación
+- Usar queries accesibles (getByRole, getByLabelText) cuando sea posible
+- Mockear llamadas a API con MSW o similar
+
+## Backend Testing (Python)
+- Usar pytest como framework
+- Fixtures para setup común
+- Mockear llamadas a base de datos y servicios externos
+- Tests de integración con base de datos de prueba
+
+## Cobertura Mínima
+- 80% para componentes críticos
+- 90% para utilidades y helpers
+- 100% para funciones de validación y seguridad

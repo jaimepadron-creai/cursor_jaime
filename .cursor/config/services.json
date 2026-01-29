@@ -1,0 +1,13 @@
+{
+  "microservices": {
+    "discovery": "workspace_mapping",
+    "services": {
+      "api": {
+        "path": "backend",
+        "language": "python",
+        "entry": "main.py",
+        "dependencies": []
+      }
+    }
+  }
+}

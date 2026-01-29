@@ -1,0 +1,25 @@
+{
+  "model_selection": {
+    "mode": "automatic",
+    "fallback_model": "gpt-4o",
+    "routing_rules": {
+      "file_patterns": {
+        "**/*.test.{ts,tsx,js,jsx}": "gemini",
+        "**/*.spec.{ts,tsx,js,jsx}": "gemini",
+        "**/docs/**/*.md": "claude",
+        "**/README.md": "claude",
+        "**/*.py": "gpt-4o",
+        "**/backend/**": "gpt-4o",
+        "**/frontend/src/**/*.tsx": "gpt-4o"
+      },
+      "task_patterns": {
+        "explain": "claude",
+        "document": "claude",
+        "test": "gemini",
+        "refactor": "gpt-4o",
+        "optimize": "gpt-4o",
+        "debug": "auto"
+      }
+    }
+  }
+}

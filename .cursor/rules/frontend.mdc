@@ -1,0 +1,36 @@
+---
+globs: **/src/**/*.tsx, **/src/**/*.ts, **/components/**/*, **/frontend/**/*
+alwaysApply: false
+---
+
+# Reglas Frontend
+
+## Convenciones React
+- Usar functional components con hooks exclusivamente
+- Implementar TypeScript interfaces para todas las props (no PropTypes)
+- Preferir composición sobre herencia
+- Usar React.memo para optimización cuando sea necesario (solo si hay re-renders innecesarios)
+- Usar useCallback para handlers pasados como props a componentes memoizados
+- Usar useMemo para cálculos costosos, no para valores simples
+
+## Hooks y Estado
+- Custom hooks deben empezar con `use` (ej: `useAuth`, `useProducts`)
+- Estado local con useState, estado global según arquitectura del proyecto
+- Evitar prop drilling; usar context o state management cuando sea necesario
+
+## Styling
+- Usar TailwindCSS como framework principal
+- Crear componentes reutilizables en `/components/ui/` o `/shared/components/`
+- Implementar dark mode con CSS variables o Tailwind dark mode
+- Clases de Tailwind deben ser legibles; usar `cn()` utility para condicionales complejas
+
+## Estructura de Componentes
+- Componentes de UI base en carpeta `ui/` o `components/ui/`
+- Componentes de página/layout en `pages/` o `components/`
+- Hooks personalizados en `hooks/` o `shared/hooks/`
+- Servicios/API clients en `services/` o `shared/services/`
+
+## Accesibilidad
+- Incluir ARIA labels cuando sea necesario
+- Asegurar navegación por teclado
+- Contraste de colores adecuado (WCAG AA mínimo)

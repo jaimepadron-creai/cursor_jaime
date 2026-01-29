@@ -1,0 +1,75 @@
+---
+globs: **/*.tsx, **/*.jsx
+alwaysApply: false
+---
+
+# Reglas para Componentes React
+
+## Template de Componente Estándar
+
+Sigue esta estructura cuando crees componentes React:
+
+```typescript
+import React, { useState, useCallback, useMemo } from 'react';
+import { cn } from '@/lib/utils'; // o tu utility de clases
+
+// 1. Interface de Props (exportada)
+export interface ComponentNameProps {
+  // Props obligatorias primero
+  title: string;
+  // Props opcionales después
+  variant?: 'primary' | 'secondary';
+  className?: string;
+  children?: React.ReactNode;
+}
+
+// 2. Componente principal
+const ComponentName: React.FC<ComponentNameProps> = ({
+  title,
+  variant = 'primary',
+  className,
+  children
+}) => {
+  // 3. State hooks primero
+  const [isActive, setIsActive] = useState(false);
+
+  // 4. Computed values con useMemo
+  const computedClass = useMemo(() => cn(
+    'base-class',
+    `variant-${variant}`,
+    className
+  ), [variant, className]);
+
+  // 5. Event handlers con useCallback
+  const handleClick = useCallback(() => {
+    setIsActive(prev => !prev);
+  }, []);
+
+  // 6. Render
+  return (
+    <div className={computedClass} onClick={handleClick}>
+      <h2>{title}</h2>
+      {children}
+    </div>
+  );
+};
+
+export default ComponentName;
+```
+
+## Patrones Específicos
+- Usar `useCallback` para event handlers pasados como props
+- Implementar **loading** y **error states** cuando sea apropiado
+- Incluir ARIA labels para accesibilidad
+- Usar `React.memo` para componentes con props complejas que se re-renderizan frecuentemente
+- Preferir composición: aceptar `children` cuando el componente es un contenedor
+
+## Orden de Declaraciones
+1. Imports (externos → internos → relativos)
+2. Interfaces/Types (exportadas)
+3. Componente principal
+4. State hooks
+5. Computed values (useMemo)
+6. Event handlers (useCallback)
+7. Effects (useEffect)
+8. Render/return

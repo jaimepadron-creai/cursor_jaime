@@ -1,0 +1,24 @@
+{
+  "workspace_type": "multi-root",
+  "package_manager": "pnpm",
+  "roots": {
+    "frontend": {
+      "path": "frontend",
+      "type": "react_app",
+      "rules": [".cursor/rules/frontend.mdc", ".cursor/rules/patterns/react-components.mdc"],
+      "context_scope": "app_focused"
+    },
+    "backend": {
+      "path": "backend",
+      "type": "fastapi_app",
+      "rules": [".cursor/rules/backend.mdc", ".cursor/rules/patterns/api-design.mdc", ".cursor/rules/patterns/database-patterns.mdc"],
+      "context_scope": "app_focused"
+    },
+    "course-website": {
+      "path": "course-website",
+      "type": "astro_site",
+      "rules": [".cursor/rules/global.mdc"],
+      "context_scope": "app_focused"
+    }
+  }
+}
