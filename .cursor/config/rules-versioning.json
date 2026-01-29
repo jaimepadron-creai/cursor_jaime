@@ -1,0 +1,37 @@
+{
+  "rules_versioning": {
+    "enabled": true,
+    "strategy": "semantic_versioning",
+    "auto_commit": false,
+
+    "versioning_triggers": {
+      "major_changes": [
+        "breaking_architectural_decisions",
+        "incompatible_pattern_changes",
+        "security_policy_updates"
+      ],
+      "minor_changes": [
+        "new_patterns_added",
+        "enhanced_guidelines",
+        "additional_examples"
+      ],
+      "patch_changes": [
+        "typo_corrections",
+        "example_improvements",
+        "clarification_updates"
+      ]
+    },
+
+    "git_integration": {
+      "auto_tag": false,
+      "changelog_generation": false,
+      "pr_validation": true,
+      "team_approval_required": false
+    },
+
+    "documentation": {
+      "generate_migration_guides": false,
+      "update_team_wiki": false
+    }
+  }
+}

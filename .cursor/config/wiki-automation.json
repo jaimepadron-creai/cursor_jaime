@@ -1,0 +1,44 @@
+{
+  "wiki_automation": {
+    "enabled": false,
+    "platform": "github_wiki",
+
+    "content_sources": [
+      {
+        "type": "code_documentation",
+        "path": "frontend/src/**/*.{ts,tsx}",
+        "extract": ["jsdoc", "type_definitions"]
+      },
+      {
+        "type": "code_documentation",
+        "path": "backend/src/**/*.py",
+        "extract": ["docstrings", "type_hints"]
+      },
+      {
+        "type": "markdown_docs",
+        "path": "docs/**/*.md",
+        "process": ["extract_sections", "cross_reference"]
+      },
+      {
+        "type": "cursor_conversations",
+        "path": ".cursor/memories/",
+        "extract": ["decisions", "patterns", "solutions"]
+      }
+    ],
+
+    "wiki_structure": {
+      "home": "Project Overview and Navigation",
+      "architecture": "System Architecture and Design",
+      "development": "Development Guide and Standards",
+      "deployment": "Deployment and Operations",
+      "api": "API Documentation and Examples",
+      "troubleshooting": "Common Issues and Solutions"
+    },
+
+    "automation_schedule": {
+      "frequency": "manual",
+      "trigger_on": ["push_to_main", "documentation_changes"],
+      "validation": true
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "auto_documentation": {
+    "enabled": true,
+    "triggers": ["pre_push", "manual", "weekly_schedule"],
+
+    "code_documentation": {
+      "jsdoc_generation": true,
+      "type_annotations": true,
+      "example_generation": false,
+      "complexity_analysis": false
+    },
+
+    "api_documentation": {
+      "openapi_generation": true,
+      "endpoint_examples": true,
+      "response_schemas": true,
+      "rate_limiting_info": false
+    },
+
+    "architecture_documentation": {
+      "dependency_graphs": false,
+      "component_relationships": false,
+      "data_flow_diagrams": false,
+      "decision_records": true
+    },
+
+    "outputs": {
+      "formats": ["markdown"],
+      "locations": ["docs/"],
+      "versioned": false
+    }
+  }
+}
