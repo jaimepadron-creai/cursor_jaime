@@ -1,0 +1,23 @@
+{
+  "privacyMode": {
+    "enabled": true,
+    "level": "maximum",
+    "dataCollection": {
+      "telemetry": false,
+      "errorReporting": false,
+      "usageAnalytics": false,
+      "codeSnippets": false
+    },
+    "localProcessing": {
+      "enabled": true,
+      "offlineMode": false,
+      "localModels": false
+    },
+    "networking": {
+      "externalConnections": true,
+      "proxyRequired": false,
+      "certificateValidation": "strict"
+    }
+  },
+  "_comment": "Módulo 12 - Seguridad y Privacidad. Ajustar level, offlineMode y proxyRequired según entorno (dev/enterprise)."
+}

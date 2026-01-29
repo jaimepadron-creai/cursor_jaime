@@ -1,0 +1,24 @@
+{
+  "security": {
+    "cursorUsage": {
+      "dataHandling": "no_sensitive_in_prompts",
+      "codeSnippets": "disabled",
+      "telemetry": "disabled"
+    },
+    "compliance": {
+      "regulations": ["GDPR", "SOX", "HIPAA"],
+      "auditLogging": true,
+      "dataResidency": "configurable"
+    },
+    "vulnerabilityScanning": {
+      "enabled": true,
+      "checkSecrets": true,
+      "checkDependencies": true
+    },
+    "keyManagement": {
+      "apiKeysFromEnv": true,
+      "rotationReminderDays": 90
+    }
+  },
+  "_comment": "Módulo 12 - Referencia de políticas. Validar con cursor security status / compliance check según documentación Cursor."
+}
